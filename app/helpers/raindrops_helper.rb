@@ -1,0 +1,2 @@
+module RaindropsHelper
+end

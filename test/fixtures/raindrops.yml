@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  water: MyString
+  shiny: 1
+
+two:
+  water: MyString
+  shiny: 1

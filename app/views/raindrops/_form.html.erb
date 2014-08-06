@@ -1,0 +1,25 @@
+<%= form_for(@raindrop) do |f| %>
+  <% if @raindrop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@raindrop.errors.count, "error") %> prohibited this raindrop from being saved:</h2>
+
+      <ul>
+      <% @raindrop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :water %><br>
+    <%= f.text_field :water %>
+  </div>
+  <div class="field">
+    <%= f.label :shiny %><br>
+    <%= f.number_field :shiny %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
