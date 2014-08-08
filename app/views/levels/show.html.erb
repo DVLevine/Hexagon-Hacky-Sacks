@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Red:</strong>
+  <%= @level.red %>
+</p>
+
+<p>
+  <strong>Blue:</strong>
+  <%= @level.blue %>
+</p>
+
+<p>
+  <strong>Green:</strong>
+  <%= @level.green %>
+</p>
+
+<%= link_to 'Edit', edit_level_path(@level) %> |
+<%= link_to 'Back', levels_path %>

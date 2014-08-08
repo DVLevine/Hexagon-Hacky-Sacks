@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806222748) do
+ActiveRecord::Schema.define(version: 20140808192646) do
+
+  create_table "levels", force: true do |t|
+    t.integer  "red"
+    t.integer  "blue"
+    t.integer  "green"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "plants", force: true do |t|
     t.string   "name"

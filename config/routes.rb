@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :levels
+
   resources :raindrops
 
   resources :plants
