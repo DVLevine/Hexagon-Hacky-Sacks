@@ -10,9 +10,4 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require backbone-min
-//= require underscore-min
-//= require two
+//= require_tree ./levels

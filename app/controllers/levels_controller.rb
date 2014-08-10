@@ -69,6 +69,6 @@ class LevelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def level_params
-      params.require(:level).permit(:red, :blue, :green)
+      params.require(:level).permit(:hex, :chib_count, :found_by)
     end
 end
