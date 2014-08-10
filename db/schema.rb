@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808192646) do
+ActiveRecord::Schema.define(version: 20140809220827) do
 
   create_table "levels", force: true do |t|
-    t.integer  "red"
-    t.integer  "blue"
-    t.integer  "green"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "hex"
+    t.integer  "chib_count"
+    t.string   "found_by"
   end
 
   create_table "plants", force: true do |t|
