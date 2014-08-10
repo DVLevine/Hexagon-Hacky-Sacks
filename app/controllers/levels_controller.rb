@@ -5,6 +5,10 @@ class LevelsController < ApplicationController
   # GET /levels.json
   def index
     @levels = Level.all
+    @rand_id = rand(Level.count)
+    @rand_level = Level.offset(@rand_id).first
+    @hex = @rand_level.hex
+    @chibs = @rand_level.chib_count
   end
 
   # GET /levels/1

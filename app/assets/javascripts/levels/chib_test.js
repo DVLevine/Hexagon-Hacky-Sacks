@@ -7,10 +7,18 @@ $(function () {
 
   Two.Resoultion = 32;
 
+  var hex = $('#level').data('hex');
+  var chibs = $('#level').data('chibs');
+  alert(chibs);
+  
   var delta = new Two.Vector();
   var mouse = new Two.Vector();
   var drag = 0.33;
   var radius = 50;
+
+  var bg = two.makeRectangle(two.width / 2, two.height / 2, two.width, two.height);
+  bg.fill = hex;
+  bg.stroke = hex;
 
   var shadow = two.makeCircle(two.width / 2, two.height / 2, radius);
   shadow.noStroke().fill = 'rgba(0, 0, 0, 0.2)';
