@@ -1,4 +1,4 @@
-<%= content_tag "div", id: "level", data: {hex: @hex, chibs: @chibs} do %>
+<%= content_tag "div", id: "level", data: {hex: @hex, cnumber: @num_chibs, carray: @chib_array} do %>
 	<% content_for :header do %>
 		<%= javascript_include_tag 'levels' %>
 	<% end %>

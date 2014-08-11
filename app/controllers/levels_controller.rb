@@ -8,7 +8,8 @@ class LevelsController < ApplicationController
     @rand_id = rand(Level.count)
     @rand_level = Level.offset(@rand_id).first
     @hex = @rand_level.hex
-    @chibs = @rand_level.chib_count
+    @num_chibs = @rand_level.chib_count
+    @chib_array = @rand_level.chibs
   end
 
   # GET /levels/1

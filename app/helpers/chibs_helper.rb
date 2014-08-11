@@ -1,0 +1,2 @@
+module ChibsHelper
+end

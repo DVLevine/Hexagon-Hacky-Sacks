@@ -1,0 +1,31 @@
+<h1>Listing chibs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>User</th>
+      <th>Mochi</th>
+      <th>Color</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chibs.each do |chib| %>
+      <tr>
+        <td><%= chib.level_id %></td>
+        <td><%= chib.user_id %></td>
+        <td><%= chib.mochi %></td>
+        <td><%= chib.color %></td>
+        <td><%= link_to 'Show', chib %></td>
+        <td><%= link_to 'Edit', edit_chib_path(chib) %></td>
+        <td><%= link_to 'Destroy', chib, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chib', new_chib_path %>

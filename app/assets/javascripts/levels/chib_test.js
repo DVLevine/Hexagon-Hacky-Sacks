@@ -8,8 +8,9 @@ $(function () {
   Two.Resoultion = 32;
 
   var hex = $('#level').data('hex');
-  var chibs = $('#level').data('chibs');
-  alert(chibs);
+  var chibCount = $('#level').data('cnumber');
+  var chibArray = $('#level').data('carray');
+  alert(chibArray[0].color);
   
   var delta = new Two.Vector();
   var mouse = new Two.Vector();

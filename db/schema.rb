@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140809220827) do
+ActiveRecord::Schema.define(version: 20140811022325) do
+
+  create_table "chibs", force: true do |t|
+    t.integer  "level_id"
+    t.integer  "user_id"
+    t.string   "mochi"
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "levels", force: true do |t|
     t.datetime "created_at"
