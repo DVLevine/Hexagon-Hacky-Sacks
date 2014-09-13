@@ -1,5 +1,6 @@
+<canvas id="canvas" resize></canvas>
 <%= content_tag "div", id: "level", data: {hex: @hex, cnumber: @num_chibs, carray: @chib_array} do %>
-	<% content_for :header do %>
-		<%= javascript_include_tag 'levels' %>
-	<% end %>
+  <% content_for :header do %>
+	<script type="text/javascript" src="assets/levels/chiblord.js"></script>
+  <% end %>
 <% end %>

@@ -15,4 +15,4 @@
 //= require turbolinks
 //= require backbone-min
 //= require underscore-min
-//= require two
+//= require paper

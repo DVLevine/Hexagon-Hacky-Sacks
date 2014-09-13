@@ -25,6 +25,9 @@ class ChibsController < ApplicationController
   # POST /chibs.json
   def create
     @chib = Chib.new(chib_params)
+    @cLevel = Level.find(@chib.level_id)
+    @cLevel.chib_count = @cLevel.chib_count + 1
+    @cLevel.save
 
     respond_to do |format|
       if @chib.save
