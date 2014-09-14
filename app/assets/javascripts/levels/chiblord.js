@@ -11,29 +11,56 @@ window.onload = function() {
 	view.draw();
 	
 	var Chib = Base.extend({
-		initialize: function(position) {
+		initialize: function(position, radius, resolution) {
 			this.position = position.clone();
-			this.vector = new Point(5,0);
-			this.createShapes();
+			this.vector = new Point(2,0);
+			this.path = new Path();
+			this.pathRadius = radius;
+			this.pathSides = resolution;
+			this.pathPoints = [this.pathSides];
+			this.pathPointNormals = [this.pathSides];
+			this.pathStyle = {
+				strokeWidth: 5,
+				strokeColor: 'black',
+				strokeCap: 'round'
+			};
+			this.group = new Group();
+			this.buildChib();
 		},
-		run: function() {
+		run: function(event) {
 			this.borders();
-			this.update();
+			this.update(event);
 			this.move();
 		},
-		createShapes: function() {
-			this.body = new Path.Circle({
-				center: [0, 0],
-				radius: 10,
-				fillColor: 'black',
-				strokeColor: 'black'
-			});
+		buildChib: function() {
+			for (var i = 0; i<this.pathSides; i++) {
+				var theta = (Math.PI * 2) / this.pathSides;
+				var angle = theta*i;
+				var x = Math.cos(angle) * this.pathRadius;
+				var y = Math.sin(angle) * this.pathRadius;
+				var point = new Point(x,y);
+				this.path.add(point);
+				this.pathPoints[i] = point.clone();
+				this.pathPointNormals[i] = point.normalize().clone();
+			}
+			this.path.closed = true;
+			this.path.smooth();
+			this.path.style = this.pathStyle;
+			this.group.addChild(this.path);
 		},
 		move: function() {
-			this.body.position = this.position;
+			this.group.position = this.position.clone();
 		},
-		update: function() {
+		update: function(event) {
 			this.position = new Point(this.position.x + this.vector.x, this.position.y + this.vector.y);
+			//pulsate!
+			for (var i = 0; i<this.pathSides; i++) {
+				var segPoint = this.path.segments[i].point;
+				var sinVal = Math.sin(-((event.count * 0.2) + (this.pathPoints[i].y * 0.0375)));
+				segPoint.x += this.pathPointNormals[i].x * sinVal;
+				segPoint.y += this.pathPointNormals[i].y * sinVal;
+			}
+			this.path.smooth();
 		},
 		borders: function() {
 			if (this.position.x > myCanvas.width) {
@@ -46,23 +73,20 @@ window.onload = function() {
 	var hex = $('#level').data('hex');
 	var chibCount = $('#level').data('cnumber');
 	var chibArray = $('#level').data('carray');
-	var radius = 10;
+	var radius = 30;
 	var chibs = [];
 
 	for (var i=0 ; i<chibCount ; i++) {
 		var cX = Point.random().x * (view.size.width - 2*radius) + radius;
 		var cY = Point.random().y * (view.size.height - 2*radius) + radius;
 		var position = new Point(cX, cY);
-		chibs.push(new Chib(position));
+		chibs.push(new Chib(position, radius, 14));
 		console.log('placed chib at: ' + position);
 	}
 	
 	view.onFrame = function(event) {
 		for (var i=0 ; i<chibCount ; i++) {
-			//var selected = project.activeLayer.children[i];
-			//selected.position += dT;
-			//console.log(selected.position);
-			chibs[i].run();
+			chibs[i].run(event);
 		}
 		view.draw();
 	};
