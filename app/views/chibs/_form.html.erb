@@ -13,19 +13,19 @@
 
   <div class="field">
     <%= f.label :level_id %><br>
-    <%= f.number_field :level_id %>
+    <%= f.number_field :level_id, :readonly => true %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.text_field :user_id, :autocomplete => :off %>
   </div>
   <div class="field">
     <%= f.label :mochi %><br>
-    <%= f.text_field :mochi %>
+    <%= f.text_field :mochi, :autocomplete => :off %>
   </div>
   <div class="field">
     <%= f.label :color %><br>
-    <%= f.text_field :color %>
+    <%= f.text_field :color, :autocomplete => :off %>
   </div>
   <div class="actions">
     <%= f.submit %>

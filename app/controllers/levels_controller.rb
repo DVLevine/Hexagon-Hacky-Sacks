@@ -15,6 +15,10 @@ class LevelsController < ApplicationController
   # GET /levels/1
   # GET /levels/1.json
   def show
+    @level = Level.find(params[:id])
+    @hex = @level.hex
+    @num_chibs = @level.chib_count
+    @chib_array = @level.chibs
   end
 
   # GET /levels/new
@@ -24,6 +28,8 @@ class LevelsController < ApplicationController
 
   # GET /levels/1/edit
   def edit
+    @level = Level.find(params[:id])
+    @chibs = @level.chibs
   end
 
   # POST /levels

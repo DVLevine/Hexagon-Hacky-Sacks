@@ -1,19 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Hex:</strong>
-  <%= @level.hex %>
-</p>
-
-<p>
-  <strong>Chib Count:</strong>
-  <%= @level.chib_count %>
-</p>
-
-<p>
-  <strong>Found By:</strong>
-  <%= @level.found_by %>
-</p>
-
-<%= link_to 'Edit', edit_level_path(@level) %> |
-<%= link_to 'Back', levels_path %>
+<canvas id="theCanvas" resize></canvas>
+<h1 id="mochi" style="text-align:center;position:absolute;left:47%;top:49%;color:black;">Mochi</h1>
+<%= content_tag "div", id: "level", data: {hex: @hex, cnumber: @num_chibs, carray: @chib_array} do %>
+  <% content_for :header do %>
+	<script type="text/javascript" src="/assets/levels/chiblord.js"></script>
+  <% end %>
+<% end %>

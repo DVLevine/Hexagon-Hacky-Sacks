@@ -5,6 +5,9 @@ class ChibsController < ApplicationController
   # GET /chibs.json
   def index
     @chibs = Chib.all
+    @chibs.each do |c|
+      print(c.hex)
+    end
   end
 
   # GET /chibs/1
@@ -14,7 +17,7 @@ class ChibsController < ApplicationController
 
   # GET /chibs/new
   def new
-    @chib = Chib.new
+    @chib = Chib.new(level_id: params[:level_id])
   end
 
   # GET /chibs/1/edit
