@@ -1,15 +1,13 @@
 class LevelsController < ApplicationController
   before_action :set_level, only: [:show, :edit, :update, :destroy]
+  before_action :pick, only: [:index]
 
   # GET /levels
   # GET /levels.json
   def index
-    @levels = Level.all
-    @rand_id = rand(Level.count)
-    @rand_level = Level.offset(@rand_id).first
-    @hex = @rand_level.hex
-    @num_chibs = @rand_level.chib_count
-    @chib_array = @rand_level.chibs
+    @hex = @level.hex
+    @num_chibs = @level.chib_count
+    @chib_array = @level.chibs
   end
 
   # GET /levels/1
@@ -70,6 +68,19 @@ class LevelsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_level
       @level = Level.find(params[:id])
+    end
+
+    def pick
+      coin = rand(2)
+      if coin == 0
+        levels = Level.all
+        rand_id = rand(Level.count)
+        @level = Level.offset(rand_id).first
+      else
+        levels = Level.all
+        rand_id = rand(Level.count)
+        @level = Level.offset(rand_id).first
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

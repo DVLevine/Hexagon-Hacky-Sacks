@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   resources :chibs
 
-  resources :levels
-
-  resources :raindrops
-
-  resources :plants
+  resources :levels do
+    get 'pick', on: :member
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
