@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811022325) do
+ActiveRecord::Schema.define(version: 20141111061618) do
 
   create_table "chibs", force: true do |t|
     t.integer  "level_id"
@@ -28,20 +28,6 @@ ActiveRecord::Schema.define(version: 20140811022325) do
     t.string   "hex"
     t.integer  "chib_count"
     t.string   "found_by"
-  end
-
-  create_table "plants", force: true do |t|
-    t.string   "name"
-    t.string   "quote"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "raindrops", force: true do |t|
-    t.string   "water"
-    t.integer  "shiny"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
 end
